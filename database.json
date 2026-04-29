@@ -1,6 +1,24 @@
 {
   "users": [
     {
+      "id": 4,
+      "role": "company",
+      "fullName": "Beksulton Usmonov",
+      "companyName": "Sultan Farm",
+      "email": "beksultonusmonov@gmail.com",
+      "password": "12345678",
+      "createdAt": "2026-04-29T06:53:01.293Z"
+    },
+    {
+      "id": 3,
+      "role": "company",
+      "fullName": "Beksulton Usmonov",
+      "companyName": "Sultan Farm",
+      "email": "beksultonusmonov15@gmail.com",
+      "password": "12345678",
+      "createdAt": "2026-04-29T06:42:33.035Z"
+    },
+    {
       "id": 1,
       "role": "employee",
       "fullName": "Ali Valiyev",
@@ -20,6 +38,62 @@
     }
   ],
   "vacancies": [
+    {
+      "title": "Frontend",
+      "company": "Sultan Farm",
+      "ownerUserId": "4",
+      "location": "Andijon",
+      "type": "Full-time",
+      "level": "Junior",
+      "experience": "2+ yil",
+      "salary": 8000000,
+      "about": "lkadgldqwgal dad\naecescs\ndc\nadcs\nd sd\ncasck",
+      "requirements": [
+        "ckjlajdbclkadb clajbc;oa ;cohae;ohaec"
+      ],
+      "responsibilities": [
+        "ckjlajdbclkadb clajbc;oa ;cohae;ohaec"
+      ],
+      "technologies": [
+        "cscseces",
+        "c ewfg4wgewsf",
+        "ewcewce",
+        "c",
+        "ew"
+      ],
+      "updatedAt": "2026-04-29T06:55:57.227Z",
+      "applicantsList": [],
+      "status": "active",
+      "id": 9
+    },
+    {
+      "title": "Back",
+      "company": "PRODUCTION",
+      "ownerUserId": null,
+      "location": "Toshkent",
+      "type": "Full-time",
+      "level": "Junior",
+      "experience": "2+ yil",
+      "salary": 8000000,
+      "about": "askhvaslicvals i",
+      "requirements": [
+        ".kjcbs leicz.kjcbsd;"
+      ],
+      "responsibilities": [
+        ".kjcbs leicz.kjcbsd;"
+      ],
+      "technologies": [
+        "sucds",
+        "fecewfceww",
+        "feewwe",
+        "c weewcewc",
+        "ew"
+      ],
+      "updatedAt": "2026-04-29T06:49:58.245Z",
+      "applicantsList": [],
+      "status": "inactive",
+      "id": 8
+    },
     {
       "title": "SMM Meneger",
       "company": "Sultan Farm",
