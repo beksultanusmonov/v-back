@@ -1,0 +1,833 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "role": "employee",
+      "fullName": "Ali Valiyev",
+      "companyName": "",
+      "email": "ali@gmail.com",
+      "password": "12345678",
+      "createdAt": "2026-04-27T18:06:18.112Z"
+    },
+    {
+      "id": 2,
+      "role": "company",
+      "fullName": "Beksulton Usmonov",
+      "companyName": "Sultan Farm",
+      "email": "beksultonusmonov16@gmail.com",
+      "password": "11111111",
+      "createdAt": "2026-04-27T16:14:51.400Z"
+    }
+  ],
+  "vacancies": [
+    {
+      "title": "SMM Meneger",
+      "company": "Sultan Farm",
+      "ownerUserId": null,
+      "location": "Andijon",
+      "type": "Full-time",
+      "level": "Middle",
+      "experience": "2+ yil",
+      "salary": 8000000,
+      "about": "ASTI ni marketingi yurgizish kerak",
+      "requirements": [
+        "iPhone bolishi kerak, kontent bn ishlay oloishi"
+      ],
+      "responsibilities": [
+        "iPhone bolishi kerak, kontent bn ishlay oloishi"
+      ],
+      "technologies": [
+        "SMM",
+        "CapCut",
+        "AI"
+      ],
+      "updatedAt": "2026-04-29T05:29:03.910Z",
+      "applicantsList": [
+        {
+          "id": "cand-1777440517382",
+          "fullName": "Ali Valiyev",
+          "userId": null,
+          "email": "ali@gmail.com",
+          "resumeId": "res-1777350203338",
+          "status": "accepted",
+          "submittedAt": "2026-04-29T05:28:37.382Z"
+        }
+      ],
+      "status": "active",
+      "id": 7
+    },
+    {
+      "title": "Frontend developer",
+      "company": "Sultan Farm",
+      "ownerUserId": null,
+      "location": "Online",
+      "type": "Full-time",
+      "level": "Junior",
+      "experience": "1+ yil",
+      "salary": "12000000",
+      "about": "Ishini ustasi bo'lishi kerak",
+      "requirements": [
+        "Barch state managment bo'yich yaxshi ishlashi kerak"
+      ],
+      "responsibilities": [
+        "Barch state managment bo'yich yaxshi ishlashi kerak"
+      ],
+      "technologies": [
+        "ReactJs",
+        "Tailwindcss",
+        "Redux Toolkit"
+      ],
+      "updatedAt": "2026-04-29T05:24:22.091Z",
+      "applicantsList": [
+        {
+          "id": "cand-1777362553326",
+          "fullName": "Ali Valiyev",
+          "userId": null,
+          "email": "ali@gmail.com",
+          "resumeId": "res-1777350203338",
+          "status": "accepted",
+          "submittedAt": "2026-04-28T07:49:13.326Z"
+        }
+      ],
+      "status": "active",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Backend Node.js Developer",
+      "company": "Sultan Farm",
+      "ownerUserId": 2,
+      "location": "Toshkent",
+      "type": "Full-time",
+      "level": "Middle",
+      "experience": "2+ yil",
+      "salary": 15000000,
+      "about": "REST API, autentifikatsiya va ma'lumotlar bazasi bilan ishlay oladigan backend developer kerak.",
+      "requirements": [
+        "Node.js va Express bo'yicha amaliy tajriba",
+        "PostgreSQL yoki MongoDB bilan ishlash",
+        "Git workflow va clean code tamoyillari"
+      ],
+      "responsibilities": [
+        "Backend API endpointlarini ishlab chiqish",
+        "Auth va role-based access logikasini yuritish",
+        "Frontend jamoa bilan API integratsiya qilish"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "JWT"
+      ],
+      "updatedAt": "2026-04-29T05:12:00.000Z",
+      "applicantsList": [],
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "title": "Frontend React Developer",
+      "company": "Sultan Farm",
+      "ownerUserId": 2,
+      "location": "Remote",
+      "type": "Full-time",
+      "level": "Middle",
+      "experience": "2+ yil",
+      "salary": 14000000,
+      "about": "Web dashboard va internal systemlar uchun React developer qidirilmoqda.",
+      "requirements": [
+        "React, hooks va component architecture bo'yicha tajriba",
+        "API bilan ishlash va state management bilimi",
+        "Responsive UI yozish ko'nikmasi"
+      ],
+      "responsibilities": [
+        "Yangi interfeys modullarini yaratish",
+        "Mavjud sahifalarda performance optimizatsiya qilish",
+        "UI buglarni tezkor hal qilish"
+      ],
+      "technologies": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Redux Toolkit"
+      ],
+      "updatedAt": "2026-04-29T05:13:00.000Z",
+      "applicantsList": [],
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "title": "UI/UX Designer",
+      "company": "Sultan Farm",
+      "ownerUserId": 2,
+      "location": "Toshkent",
+      "type": "Hybrid",
+      "level": "Middle",
+      "experience": "2+ yil",
+      "salary": 11000000,
+      "about": "Mahsulot dizaynini foydalanuvchi tajribasi asosida yaxshilaydigan dizayner kerak.",
+      "requirements": [
+        "Figma bilan professional darajada ishlash",
+        "Wireframe va prototip tayyorlash tajribasi",
+        "Design system bilan ishlagan bo'lish"
+      ],
+      "responsibilities": [
+        "Yangi product flowlar uchun UI/UX yechimlar ishlab chiqish",
+        "Developerlar bilan birga dizaynlarni implementatsiyaga tayyorlash",
+        "Mijoz feedback asosida iteratsiya qilish"
+      ],
+      "technologies": [
+        "Figma",
+        "FigJam",
+        "Design Systems"
+      ],
+      "updatedAt": "2026-04-29T05:14:00.000Z",
+      "applicantsList": [],
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "title": "QA Engineer",
+      "company": "Sultan Farm",
+      "ownerUserId": 2,
+      "location": "Remote",
+      "type": "Part-time",
+      "level": "Junior",
+      "experience": "1+ yil",
+      "salary": 9000000,
+      "about": "Web va mobile platformalarda test jarayonlarini yo'lga qo'yadigan QA mutaxassis kerak.",
+      "requirements": [
+        "Manual testing bo'yicha tajriba",
+        "API testlar (Postman) bilan ishlay olish",
+        "Bug report yozish bo'yicha aniq yondashuv"
+      ],
+      "responsibilities": [
+        "Regression va smoke testlarni bajarish",
+        "Feature release oldidan test checklist yuritish",
+        "Topilgan xatolarni aniq reproduksiya bilan yozish"
+      ],
+      "technologies": [
+        "Postman",
+        "Jira",
+        "Playwright"
+      ],
+      "updatedAt": "2026-04-29T05:15:00.000Z",
+      "applicantsList": [],
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "title": "DevOps Engineer",
+      "company": "Sultan Farm",
+      "ownerUserId": 2,
+      "location": "Toshkent",
+      "type": "Full-time",
+      "level": "Senior",
+      "experience": "3+ yil",
+      "salary": 20000000,
+      "about": "CI/CD, deployment va monitoring jarayonlarini boshqaradigan DevOps engineer qidirilmoqda.",
+      "requirements": [
+        "Docker va Linux bo'yicha chuqur bilim",
+        "CI/CD pipeline (GitHub Actions yoki GitLab CI) tajribasi",
+        "Cloud servislar bilan ishlash (AWS yoki GCP)"
+      ],
+      "responsibilities": [
+        "Deployment jarayonlarini avtomatlashtirish",
+        "Server monitoring va alert tizimini yo'lga qo'yish",
+        "Infra xavfsizligi va barqarorligini ta'minlash"
+      ],
+      "technologies": [
+        "Docker",
+        "Nginx",
+        "GitHub Actions",
+        "AWS"
+      ],
+      "updatedAt": "2026-04-29T05:16:00.000Z",
+      "applicantsList": [],
+      "status": "active"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "slug": "frontend-react",
+      "name": "Frontend React Mastery",
+      "description": "Frontend yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "O‘rta",
+      "teacher": "Jasur Toshmatov",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "💻",
+      "gradient": "from-indigo-600 via-indigo-700 to-slate-900",
+      "category": "Frontend",
+      "videoLessons": [
+        {
+          "id": "1-1",
+          "title": "React Asoslari 1",
+          "youtubeUrl": "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+          "youtubeId": "w7ejDZ8SWv8"
+        },
+        {
+          "id": "1-2",
+          "title": "React Hooks",
+          "youtubeUrl": "https://www.youtube.com/watch?v=TNhaISOUy6Q",
+          "youtubeId": "TNhaISOUy6Q"
+        },
+        {
+          "id": "1-3",
+          "title": "React Router",
+          "youtubeUrl": "https://www.youtube.com/watch?v=Law7wfdg_ls",
+          "youtubeId": "Law7wfdg_ls"
+        },
+        {
+          "id": "1-4",
+          "title": "Tailwind UI",
+          "youtubeUrl": "https://www.youtube.com/watch?v=dFgzHOX84xQ",
+          "youtubeId": "dFgzHOX84xQ"
+        },
+        {
+          "id": "1-5",
+          "title": "Mini Project",
+          "youtubeUrl": "https://www.youtube.com/watch?v=Rh3tobg7hEo",
+          "youtubeId": "Rh3tobg7hEo"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "backend-node",
+      "name": "Backend Node.js API",
+      "description": "Backend yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "O‘rta",
+      "teacher": "Bekzod Ismoilov",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "🛠️",
+      "gradient": "from-emerald-600 via-teal-700 to-slate-900",
+      "category": "Backend",
+      "videoLessons": [
+        {
+          "id": "2-1",
+          "title": "Node Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
+          "youtubeId": "fBNz5xF-Kx4"
+        },
+        {
+          "id": "2-2",
+          "title": "Express CRUD",
+          "youtubeUrl": "https://www.youtube.com/watch?v=l8WPWK9mS5M",
+          "youtubeId": "l8WPWK9mS5M"
+        },
+        {
+          "id": "2-3",
+          "title": "Middleware",
+          "youtubeUrl": "https://www.youtube.com/watch?v=SccSCuHhOw0",
+          "youtubeId": "SccSCuHhOw0"
+        },
+        {
+          "id": "2-4",
+          "title": "Auth Basics",
+          "youtubeUrl": "https://www.youtube.com/watch?v=2jqok-WgelI",
+          "youtubeId": "2jqok-WgelI"
+        },
+        {
+          "id": "2-5",
+          "title": "REST Project",
+          "youtubeUrl": "https://www.youtube.com/watch?v=Oe421EPjeBE",
+          "youtubeId": "Oe421EPjeBE"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "mobile-react-native",
+      "name": "React Native Starter",
+      "description": "Mobile yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "Boshlang‘ich",
+      "teacher": "Sardor Qodirov",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "📱",
+      "gradient": "from-cyan-600 via-sky-700 to-slate-900",
+      "category": "Mobile",
+      "videoLessons": [
+        {
+          "id": "3-1",
+          "title": "RN Setup",
+          "youtubeUrl": "https://www.youtube.com/watch?v=0-S5a0eXPoc",
+          "youtubeId": "0-S5a0eXPoc"
+        },
+        {
+          "id": "3-2",
+          "title": "RN Components",
+          "youtubeUrl": "https://www.youtube.com/watch?v=qSRrxpdMpVc",
+          "youtubeId": "qSRrxpdMpVc"
+        },
+        {
+          "id": "3-3",
+          "title": "Navigation",
+          "youtubeUrl": "https://www.youtube.com/watch?v=VozPNrt-LfE",
+          "youtubeId": "VozPNrt-LfE"
+        },
+        {
+          "id": "3-4",
+          "title": "State Management",
+          "youtubeUrl": "https://www.youtube.com/watch?v=j942wKiXFu8",
+          "youtubeId": "j942wKiXFu8"
+        },
+        {
+          "id": "3-5",
+          "title": "API Integration",
+          "youtubeUrl": "https://www.youtube.com/watch?v=ur6I5m2nTvk",
+          "youtubeId": "ur6I5m2nTvk"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "ui-ux-figma",
+      "name": "UI/UX Figma Pro",
+      "description": "Dizayn yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "O‘rta",
+      "teacher": "Madina Akbarova",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "🎨",
+      "gradient": "from-violet-600 via-indigo-700 to-slate-900",
+      "category": "Dizayn",
+      "videoLessons": [
+        {
+          "id": "4-1",
+          "title": "Figma Basics",
+          "youtubeUrl": "https://www.youtube.com/watch?v=FTFaQWZBqQ8",
+          "youtubeId": "FTFaQWZBqQ8"
+        },
+        {
+          "id": "4-2",
+          "title": "Wireframe",
+          "youtubeUrl": "https://www.youtube.com/watch?v=1pW_sk-2y40",
+          "youtubeId": "1pW_sk-2y40"
+        },
+        {
+          "id": "4-3",
+          "title": "Design System",
+          "youtubeUrl": "https://www.youtube.com/watch?v=NnQr6s5Vn6U",
+          "youtubeId": "NnQr6s5Vn6U"
+        },
+        {
+          "id": "4-4",
+          "title": "Prototype",
+          "youtubeUrl": "https://www.youtube.com/watch?v=S4Kf9J0f2XY",
+          "youtubeId": "S4Kf9J0f2XY"
+        },
+        {
+          "id": "4-5",
+          "title": "Portfolio UI",
+          "youtubeUrl": "https://www.youtube.com/watch?v=wIuVvCuiJhU",
+          "youtubeId": "wIuVvCuiJhU"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "qa-automation",
+      "name": "QA Automation",
+      "description": "QA yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "Boshlang‘ich",
+      "teacher": "Nodir Rahimov",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "🧪",
+      "gradient": "from-rose-600 via-pink-700 to-slate-900",
+      "category": "QA",
+      "videoLessons": [
+        {
+          "id": "5-1",
+          "title": "QA Fundamentals",
+          "youtubeUrl": "https://www.youtube.com/watch?v=7Qf4A2u7Q7A",
+          "youtubeId": "7Qf4A2u7Q7A"
+        },
+        {
+          "id": "5-2",
+          "title": "Test Case",
+          "youtubeUrl": "https://www.youtube.com/watch?v=lYh7NQ4mF-E",
+          "youtubeId": "lYh7NQ4mF-E"
+        },
+        {
+          "id": "5-3",
+          "title": "Playwright Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=3e1GHCA3GP0",
+          "youtubeId": "3e1GHCA3GP0"
+        },
+        {
+          "id": "5-4",
+          "title": "API Testing",
+          "youtubeUrl": "https://www.youtube.com/watch?v=VywxIQ2ZXw4",
+          "youtubeId": "VywxIQ2ZXw4"
+        },
+        {
+          "id": "5-5",
+          "title": "CI for QA",
+          "youtubeUrl": "https://www.youtube.com/watch?v=R8_veQiYBjI",
+          "youtubeId": "R8_veQiYBjI"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "data-python",
+      "name": "Python Data Analysis",
+      "description": "Data Science yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "O‘rta",
+      "teacher": "Dilshod Ergashev",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "🐍",
+      "gradient": "from-amber-600 via-orange-700 to-slate-900",
+      "category": "Data Science",
+      "videoLessons": [
+        {
+          "id": "6-1",
+          "title": "Python Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+          "youtubeId": "rfscVS0vtbw"
+        },
+        {
+          "id": "6-2",
+          "title": "NumPy",
+          "youtubeUrl": "https://www.youtube.com/watch?v=QUT1VHiLmmI",
+          "youtubeId": "QUT1VHiLmmI"
+        },
+        {
+          "id": "6-3",
+          "title": "Pandas",
+          "youtubeUrl": "https://www.youtube.com/watch?v=vmEHCJofslg",
+          "youtubeId": "vmEHCJofslg"
+        },
+        {
+          "id": "6-4",
+          "title": "Data Viz",
+          "youtubeUrl": "https://www.youtube.com/watch?v=GpQoQW9FQUM",
+          "youtubeId": "GpQoQW9FQUM"
+        },
+        {
+          "id": "6-5",
+          "title": "ML Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=i_LwzRVP7bg",
+          "youtubeId": "i_LwzRVP7bg"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "devops-basics",
+      "name": "DevOps Basics",
+      "description": "DevOps yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "Boshlang‘ich",
+      "teacher": "Azizbek Karimov",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "⚙️",
+      "gradient": "from-slate-700 via-slate-800 to-slate-900",
+      "category": "DevOps",
+      "videoLessons": [
+        {
+          "id": "7-1",
+          "title": "DevOps Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=0yWAtQ6wYNM",
+          "youtubeId": "0yWAtQ6wYNM"
+        },
+        {
+          "id": "7-2",
+          "title": "Linux Basics",
+          "youtubeUrl": "https://www.youtube.com/watch?v=sWbUDq4S6Y8",
+          "youtubeId": "sWbUDq4S6Y8"
+        },
+        {
+          "id": "7-3",
+          "title": "Docker",
+          "youtubeUrl": "https://www.youtube.com/watch?v=3c-iBn73dDE",
+          "youtubeId": "3c-iBn73dDE"
+        },
+        {
+          "id": "7-4",
+          "title": "CI/CD",
+          "youtubeUrl": "https://www.youtube.com/watch?v=scEDHsr3APg",
+          "youtubeId": "scEDHsr3APg"
+        },
+        {
+          "id": "7-5",
+          "title": "Deploy Demo",
+          "youtubeUrl": "https://www.youtube.com/watch?v=gAkwW2tuIqE",
+          "youtubeId": "gAkwW2tuIqE"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "product-management",
+      "name": "Product Management",
+      "description": "Product yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "O‘rta",
+      "teacher": "Muhammad Aliyev",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "📈",
+      "gradient": "from-fuchsia-600 via-purple-700 to-slate-900",
+      "category": "Product",
+      "videoLessons": [
+        {
+          "id": "8-1",
+          "title": "PM Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=H9ejj7N2F4I",
+          "youtubeId": "H9ejj7N2F4I"
+        },
+        {
+          "id": "8-2",
+          "title": "Discovery",
+          "youtubeUrl": "https://www.youtube.com/watch?v=jY8m5fW4xJ4",
+          "youtubeId": "jY8m5fW4xJ4"
+        },
+        {
+          "id": "8-3",
+          "title": "Roadmap",
+          "youtubeUrl": "https://www.youtube.com/watch?v=0I6Qvfi5N1I",
+          "youtubeId": "0I6Qvfi5N1I"
+        },
+        {
+          "id": "8-4",
+          "title": "Metrics",
+          "youtubeUrl": "https://www.youtube.com/watch?v=M0L0adfM0yY",
+          "youtubeId": "M0L0adfM0yY"
+        },
+        {
+          "id": "8-5",
+          "title": "Stakeholder Mgmt",
+          "youtubeUrl": "https://www.youtube.com/watch?v=RG4Lh5W6Qh0",
+          "youtubeId": "RG4Lh5W6Qh0"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "marketing-digital",
+      "name": "Digital Marketing",
+      "description": "Marketing yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "Boshlang‘ich",
+      "teacher": "Malika Yusupova",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "📣",
+      "gradient": "from-lime-600 via-green-700 to-slate-900",
+      "category": "Marketing",
+      "videoLessons": [
+        {
+          "id": "9-1",
+          "title": "Marketing Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=nU-IIXBWlS4",
+          "youtubeId": "nU-IIXBWlS4"
+        },
+        {
+          "id": "9-2",
+          "title": "SMM Basics",
+          "youtubeUrl": "https://www.youtube.com/watch?v=bixR-KIJKYM",
+          "youtubeId": "bixR-KIJKYM"
+        },
+        {
+          "id": "9-3",
+          "title": "Targeting",
+          "youtubeUrl": "https://www.youtube.com/watch?v=2N2nIkAB-0A",
+          "youtubeId": "2N2nIkAB-0A"
+        },
+        {
+          "id": "9-4",
+          "title": "Content Strategy",
+          "youtubeUrl": "https://www.youtube.com/watch?v=4q7nV8J4v8U",
+          "youtubeId": "4q7nV8J4v8U"
+        },
+        {
+          "id": "9-5",
+          "title": "Analytics",
+          "youtubeUrl": "https://www.youtube.com/watch?v=f2G9wP2w48Q",
+          "youtubeId": "f2G9wP2w48Q"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "cyber-security",
+      "name": "Cyber Security Basics",
+      "description": "Security yo‘nalishi bo‘yicha amaliy video darslar.",
+      "price": "Bepul",
+      "duration": "10 soat",
+      "lessons": "5 dars",
+      "level": "Boshlang‘ich",
+      "teacher": "Sherzod Nurmatov",
+      "rating": "4.9",
+      "reviews": "1,000+",
+      "progress": 0,
+      "status": "Faol",
+      "icon": "🔐",
+      "gradient": "from-red-700 via-rose-800 to-slate-900",
+      "category": "Security",
+      "videoLessons": [
+        {
+          "id": "10-1",
+          "title": "Security Intro",
+          "youtubeUrl": "https://www.youtube.com/watch?v=inWWhr5tnEA",
+          "youtubeId": "inWWhr5tnEA"
+        },
+        {
+          "id": "10-2",
+          "title": "OWASP",
+          "youtubeUrl": "https://www.youtube.com/watch?v=3Kq1MIfTWCE",
+          "youtubeId": "3Kq1MIfTWCE"
+        },
+        {
+          "id": "10-3",
+          "title": "Auth Security",
+          "youtubeUrl": "https://www.youtube.com/watch?v=8ZtInClXe1Q",
+          "youtubeId": "8ZtInClXe1Q"
+        },
+        {
+          "id": "10-4",
+          "title": "SQLi/XSS",
+          "youtubeUrl": "https://www.youtube.com/watch?v=ciNHn38EyRc",
+          "youtubeId": "ciNHn38EyRc"
+        },
+        {
+          "id": "10-5",
+          "title": "Best Practices",
+          "youtubeUrl": "https://www.youtube.com/watch?v=n3N0fYk6m3Q",
+          "youtubeId": "n3N0fYk6m3Q"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "apply-vacancy",
+      "category": "Nomzodlar",
+      "q": "Vakansiyaga qanday ariza topshiraman?",
+      "a": "Vakansiya detail sahifasida ariza yuborish bo‘limi orqali resume topshirishingiz mumkin."
+    },
+    {
+      "id": "register-company",
+      "category": "Kompaniyalar",
+      "q": "Kompaniya sifatida qanday ro‘yxatdan o‘taman?",
+      "a": "Ro‘yxatdan o‘tish sahifasida Kompaniya rolini tanlab ma’lumotlarni kiriting."
+    },
+    {
+      "id": "salary-currency",
+      "category": "Umumiy",
+      "q": "Maoshlar qaysi valyutada ko‘rsatiladi?",
+      "a": "Platformadagi maoshlar O‘zbek so‘mida (UZS) ko‘rsatiladi."
+    }
+  ],
+  "resumes": [
+    {
+      "fullName": "Ali Valiyev",
+      "email": "ali@gmail.com",
+      "phone": "+998903810616",
+      "location": "Andijon",
+      "summary": "Men Usmonov Beksulton Frontend Developer sifatida 2 yildan beri ishlab kelaman",
+      "skills": "HTML, CSS, JavaScript, ReactJs, Tailwindcss, NodeJs, ",
+      "experience": "React Js da state menegment bilan ishlash",
+      "education": "Najot Talim, ASTI\n",
+      "portfolio": "https://t.me/beksulton_usmonov",
+      "updatedAt": "2026-04-29T05:21:36.988Z",
+      "id": "res-1777350203338",
+      "userId": null
+    }
+  ],
+  "courseProgress": [
+    {
+      "userId": "email:ali@gmail.com",
+      "courseId": 2,
+      "completedLessonIds": [
+        "2-1",
+        "2-2",
+        "2-3",
+        "2-4",
+        "2-5"
+      ],
+      "completed": true,
+      "updatedAt": "2026-04-29T05:23:41.518Z"
+    },
+    {
+      "userId": "email:ali@gmail.com",
+      "courseId": 1,
+      "completedLessonIds": [
+        "1-1",
+        "1-2",
+        "1-4",
+        "1-5",
+        "1-3"
+      ],
+      "completed": true,
+      "updatedAt": "2026-04-28T05:39:18.550Z"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert-1777440221518",
+      "userId": "email:ali@gmail.com",
+      "courseId": 2,
+      "fullName": "Ali Valiyev",
+      "courseName": "Backend Node.js API",
+      "issuedAt": "2026-04-29T05:23:41.518Z"
+    },
+    {
+      "id": "cert-1777354758550",
+      "userId": "email:ali@gmail.com",
+      "courseId": 1,
+      "fullName": "Ali Valiyev",
+      "courseName": "Frontend React Mastery",
+      "issuedAt": "2026-04-28T05:39:18.550Z"
+    }
+  ]
+}
