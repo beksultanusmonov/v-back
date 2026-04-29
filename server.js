@@ -5,7 +5,22 @@ const { readDb, updateDb } = require('./database.js')
 const app = express()
 const PORT = process.env.PORT || 4000
 
-app.use(cors())
+const allowedOrigins = String("https://your-job-by-isroilov.netlify.app", "http://localhost:5173")
+  .split(',')
+  .map((item) => item.trim())
+  .filter(Boolean)
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin) return callback(null, true)
+      if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) return callback(null, true)
+      return callback(new Error('CORS_NOT_ALLOWED'))
+    },
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+)
 app.use(express.json())
 
 app.get('/api/health', (_req, res) => {
