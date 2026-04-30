@@ -5,7 +5,7 @@ const { readDb, updateDb } = require('./database.js')
 const app = express()
 const PORT = process.env.PORT || 4000
 
-const allowedOrigins = String("https://your-job-by-isroilov.netlify.app", "http://localhost:5173")
+const allowedOrigins = String(process.env.CORS_ORIGINS || 'https://your-job-by-isroilov.netlify.app,http://localhost:5173')
   .split(',')
   .map((item) => item.trim())
   .filter(Boolean)
@@ -27,11 +27,129 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true, service: 'vacancy-backend' })
 })
 
+function initializeSse(res) {
+  res.setHeader('Content-Type', 'text/event-stream')
+  res.setHeader('Cache-Control', 'no-cache, no-transform')
+  res.setHeader('Connection', 'keep-alive')
+  res.setHeader('X-Accel-Buffering', 'no')
+  res.flushHeaders?.()
+  res.write(`event: connected\ndata: ${JSON.stringify({ ok: true })}\n\n`)
+  const heartbeat = setInterval(() => {
+    try {
+      res.write(': ping\n\n')
+    } catch {
+      clearInterval(heartbeat)
+    }
+  }, 25000)
+  return heartbeat
+}
+
+app.get('/api/events/company', (req, res) => {
+  const ownerUserId = String(req.query.ownerUserId || '').trim()
+  if (!ownerUserId) return res.status(400).json({ message: 'ownerUserId majburiy.' })
+  const channel = getCompanyChannelKey(ownerUserId)
+  const heartbeat = initializeSse(res)
+  subscribeSse(channel, res)
+  req.on('close', () => {
+    clearInterval(heartbeat)
+    unsubscribeSse(channel, res)
+  })
+})
+
+app.get('/api/events/employee', (req, res) => {
+  const userId = String(req.query.userId || '').trim()
+  const email = String(req.query.email || '').trim().toLowerCase()
+  const channels = getEmployeeChannelKeys(userId, email)
+  if (!channels.length) return res.status(400).json({ message: 'userId yoki email majburiy.' })
+  const heartbeat = initializeSse(res)
+  channels.forEach((channel) => subscribeSse(channel, res))
+  req.on('close', () => {
+    clearInterval(heartbeat)
+    channels.forEach((channel) => unsubscribeSse(channel, res))
+  })
+})
+
 function normalizeSalary(value) {
   const digitsOnly = String(value ?? '').replace(/[^\d]/g, '')
   if (!digitsOnly) return null
   const amount = Number(digitsOnly)
   return Number.isFinite(amount) && amount > 0 ? amount : null
+}
+
+const ADMIN_EMAIL = 'admin@gmail.com'
+const ADMIN_PASSWORD = 'byisroilov'
+
+async function ensureAdminAccount() {
+  await updateDb((db) => {
+    const users = Array.isArray(db.users) ? db.users : []
+    const hasAdmin = users.some((item) => String(item.email || '').toLowerCase() === ADMIN_EMAIL)
+    if (hasAdmin) return db
+    const maxUserId = users.reduce((max, item) => {
+      const numericId = Number(item.id)
+      return Number.isFinite(numericId) ? Math.max(max, numericId) : max
+    }, -1)
+    const adminUser = {
+      id: maxUserId + 1,
+      role: 'admin',
+      fullName: 'Super Admin',
+      companyName: '',
+      email: ADMIN_EMAIL,
+      password: ADMIN_PASSWORD,
+      createdAt: new Date().toISOString(),
+    }
+    return { ...db, users: [adminUser, ...users] }
+  })
+}
+
+const sseChannels = new Map()
+let sseEventCounter = 0
+
+function nextSseEventId() {
+  sseEventCounter += 1
+  return String(sseEventCounter)
+}
+
+function getCompanyChannelKey(ownerUserId) {
+  return `company:${String(ownerUserId || '').trim()}`
+}
+
+function getEmployeeChannelKeys(userId, email) {
+  const channels = []
+  const normalizedUserId = String(userId || '').trim()
+  const normalizedEmail = String(email || '').trim().toLowerCase()
+  if (normalizedUserId) channels.push(`employee:user:${normalizedUserId}`)
+  if (normalizedEmail) channels.push(`employee:email:${normalizedEmail}`)
+  return channels
+}
+
+function subscribeSse(channel, res) {
+  if (!sseChannels.has(channel)) sseChannels.set(channel, new Set())
+  sseChannels.get(channel).add(res)
+}
+
+function unsubscribeSse(channel, res) {
+  const subscribers = sseChannels.get(channel)
+  if (!subscribers) return
+  subscribers.delete(res)
+  if (subscribers.size === 0) sseChannels.delete(channel)
+}
+
+function emitSse(channel, event, payload) {
+  const subscribers = sseChannels.get(channel)
+  if (!subscribers || subscribers.size === 0) return
+  const message = `id: ${nextSseEventId()}\nevent: ${event}\ndata: ${JSON.stringify(payload)}\n\n`
+  subscribers.forEach((res) => {
+    try {
+      res.write(message)
+    } catch {
+      // ignore broken connection writes
+    }
+  })
+}
+
+function emitSseToEmployee(userId, email, event, payload) {
+  const channels = getEmployeeChannelKeys(userId, email)
+  channels.forEach((channel) => emitSse(channel, event, payload))
 }
 
 function buildSeedCourses() {
@@ -248,13 +366,13 @@ async function ensureCourseCatalog() {
   })
 }
 
-app.get('/api/health', (_req, res) => {
-  res.json({ ok: true, service: 'vacancy-backend' })
-})
-
-app.get('/api/vacancies', async (_req, res) => {
+app.get('/api/vacancies', async (req, res) => {
   const db = await readDb()
-  res.json(db.vacancies || [])
+  const allVacancies = Array.isArray(db.vacancies) ? db.vacancies : []
+  const normalizedStatus = String(req.query.status || '').trim().toLowerCase()
+  if (!normalizedStatus) return res.json(allVacancies)
+  const filtered = allVacancies.filter((item) => String(item.status || '').trim().toLowerCase() === normalizedStatus)
+  return res.json(filtered)
 })
 
 app.get('/api/vacancies/:id', async (req, res) => {
@@ -274,7 +392,7 @@ app.post('/api/vacancies', async (req, res) => {
       const numericId = Number(item.id)
       if (Number.isFinite(numericId)) return Math.max(max, numericId)
       return max
-    }, 0)
+    }, -1)
     newVacancy = {
       ...payload,
       salary: normalizedSalary,
@@ -289,6 +407,14 @@ app.post('/api/vacancies', async (req, res) => {
     }
   })
 
+  if (newVacancy?.ownerUserId) {
+    emitSse(getCompanyChannelKey(newVacancy.ownerUserId), 'vacancy_created', {
+      vacancyId: newVacancy.id,
+      status: newVacancy.status,
+      updatedAt: newVacancy.updatedAt,
+    })
+  }
+
   res.status(201).json(newVacancy)
 })
 
@@ -300,6 +426,7 @@ app.post('/api/vacancies/:id/apply', async (req, res) => {
 
   let appliedCandidate = null
   let foundVacancy = false
+  let targetVacancyOwnerId = null
 
   await updateDb((db) => {
     const resumes = db.resumes || []
@@ -316,6 +443,7 @@ app.post('/api/vacancies/:id/apply', async (req, res) => {
     const vacancies = (db.vacancies || []).map((item) => {
       if (String(item.id) !== String(req.params.id)) return item
       foundVacancy = true
+      targetVacancyOwnerId = item.ownerUserId || null
 
       const applicantsList = Array.isArray(item.applicantsList) ? item.applicantsList : []
       const existingIndex = applicantsList.findIndex((candidate) => {
@@ -356,6 +484,20 @@ app.post('/api/vacancies/:id/apply', async (req, res) => {
     return res.status(409).json({ message: 'Siz bu vakansiyaga avval topshirgansiz.' })
   }
 
+  emitSseToEmployee(appliedCandidate.userId, appliedCandidate.email, 'application_sent', {
+    vacancyId: req.params.id,
+    status: appliedCandidate.status,
+    submittedAt: appliedCandidate.submittedAt,
+  })
+  if (targetVacancyOwnerId) {
+    emitSse(getCompanyChannelKey(targetVacancyOwnerId), 'application_submitted', {
+      vacancyId: req.params.id,
+      applicantId: appliedCandidate.id,
+      status: appliedCandidate.status,
+      submittedAt: appliedCandidate.submittedAt,
+    })
+  }
+
   return res.json(appliedCandidate)
 })
 
@@ -369,6 +511,7 @@ app.delete('/api/vacancies/:id/apply', async (req, res) => {
 
   let foundVacancy = false
   let removed = false
+  let removedCandidate = null
 
   await updateDb((db) => {
     const vacancies = (db.vacancies || []).map((item) => {
@@ -379,7 +522,10 @@ app.delete('/api/vacancies/:id/apply', async (req, res) => {
         const sameByUserId = applicantUserId && String(candidate.userId || '') === applicantUserId
         const sameByEmail = String(candidate.email || '').toLowerCase() === applicantEmail
         const shouldRemove = sameByUserId || sameByEmail
-        if (shouldRemove) removed = true
+        if (shouldRemove) {
+          removed = true
+          removedCandidate = candidate
+        }
         return !shouldRemove
       })
       if (!removed) return item
@@ -395,6 +541,12 @@ app.delete('/api/vacancies/:id/apply', async (req, res) => {
   if (!foundVacancy) return res.status(404).json({ message: 'Vacancy topilmadi.' })
   if (!removed) return res.status(404).json({ message: 'Topshirilgan ariza topilmadi.' })
 
+  emitSseToEmployee(removedCandidate?.userId, removedCandidate?.email, 'application_withdrawn', {
+    vacancyId: req.params.id,
+    status: 'withdrawn',
+    updatedAt: new Date().toISOString(),
+  })
+
   return res.json({ ok: true })
 })
 
@@ -404,24 +556,111 @@ app.put('/api/vacancies/:id', async (req, res) => {
     ? normalizeSalary(payload.salary)
     : undefined
   let found = false
+  let updatedVacancy = null
+  const changedApplicantStatuses = []
 
   await updateDb((db) => {
     const vacancies = (db.vacancies || []).map((item) => {
       if (String(item.id) !== String(req.params.id)) return item
       found = true
-      return {
+      const nextVacancy = {
         ...item,
         ...payload,
         ...(normalizedSalary !== undefined ? { salary: normalizedSalary } : {}),
         id: item.id,
         updatedAt: new Date().toISOString(),
       }
+      updatedVacancy = nextVacancy
+
+      const prevApplicants = Array.isArray(item.applicantsList) ? item.applicantsList : []
+      const nextApplicants = Array.isArray(nextVacancy.applicantsList) ? nextVacancy.applicantsList : []
+      nextApplicants.forEach((candidate) => {
+        const previous = prevApplicants.find((it) => String(it.id) === String(candidate.id))
+        if (previous && previous.status !== candidate.status) {
+          changedApplicantStatuses.push({
+            userId: candidate.userId,
+            email: candidate.email,
+            applicantId: candidate.id,
+            status: candidate.status,
+          })
+        }
+      })
+      return nextVacancy
     })
     return { ...db, vacancies }
   })
 
   if (!found) return res.status(404).json({ message: 'Vacancy topilmadi' })
+  if (updatedVacancy?.ownerUserId) {
+    emitSse(getCompanyChannelKey(updatedVacancy.ownerUserId), 'vacancy_updated', {
+      vacancyId: updatedVacancy.id,
+      status: updatedVacancy.status,
+      updatedAt: updatedVacancy.updatedAt,
+    })
+  }
+  changedApplicantStatuses.forEach((entry) => {
+    emitSseToEmployee(entry.userId, entry.email, 'application_status_changed', {
+      vacancyId: req.params.id,
+      applicantId: entry.applicantId,
+      status: entry.status,
+      updatedAt: updatedVacancy?.updatedAt || new Date().toISOString(),
+    })
+  })
   return res.json({ ok: true })
+})
+
+app.delete('/api/vacancies/:id', async (req, res) => {
+  const payload = req.body || {}
+  const identifierCandidates = [
+    payload.ownerUserId,
+    payload.userId,
+    payload.email,
+    req.query.ownerUserId,
+    req.query.userId,
+    req.query.email,
+  ]
+    .map((item) => String(item || '').trim().toLowerCase())
+    .filter(Boolean)
+  if (identifierCandidates.length === 0) {
+    return res.status(400).json({ message: 'ownerUserId yoki email majburiy.' })
+  }
+  const normalizedCompanyCandidates = [payload.companyName, req.query.companyName]
+    .map((item) => String(item || '').trim().toLowerCase())
+    .filter(Boolean)
+
+  let removedVacancy = null
+  let found = false
+  let forbidden = false
+  let removedOwnerKey = null
+
+  await updateDb((db) => {
+    const vacancies = Array.isArray(db.vacancies) ? db.vacancies : []
+    const target = vacancies.find((item) => String(item.id) === String(req.params.id))
+    if (!target) return db
+    found = true
+    const targetOwner = String(target.ownerUserId || '').trim().toLowerCase()
+    const targetCompany = String(target.company || '').trim().toLowerCase()
+    const ownerMatches = Boolean(targetOwner) && identifierCandidates.includes(targetOwner)
+    const companyMatches = !targetOwner && normalizedCompanyCandidates.includes(targetCompany)
+    if (!ownerMatches && !companyMatches) {
+      forbidden = true
+      return db
+    }
+    removedVacancy = target
+    removedOwnerKey = target.ownerUserId || null
+    const nextVacancies = vacancies.filter((item) => String(item.id) !== String(req.params.id))
+    return { ...db, vacancies: nextVacancies }
+  })
+
+  if (!found) return res.status(404).json({ message: 'Vacancy topilmadi.' })
+  if (forbidden) return res.status(403).json({ message: 'Bu vakansiyani o‘chirishga ruxsat yo‘q.' })
+
+  emitSse(getCompanyChannelKey(removedOwnerKey), 'vacancy_deleted', {
+    vacancyId: req.params.id,
+    updatedAt: new Date().toISOString(),
+  })
+
+  return res.json({ ok: true, deletedId: req.params.id, deletedVacancy: removedVacancy })
 })
 
 app.get('/api/courses', async (_req, res) => {
@@ -550,7 +789,7 @@ app.post('/api/auth/register', async (req, res) => {
       const numericId = Number(item.id)
       if (Number.isFinite(numericId)) return Math.max(max, numericId)
       return max
-    }, 0)
+    }, -1)
     createdUser = {
       id: maxUserId + 1,
       role: payload.role || 'employee',
@@ -674,8 +913,114 @@ app.post('/api/resume', async (req, res) => {
   return res.json(savedResume)
 })
 
+app.get('/api/admin/overview', async (_req, res) => {
+  const db = await readDb()
+  const users = (db.users || []).map(({ password, ...safeUser }) => safeUser)
+  const vacancies = db.vacancies || []
+  const resumes = db.resumes || []
+  const courses = db.courses || []
+  const certificates = db.certificates || []
+
+  const stats = {
+    users: users.length,
+    companies: users.filter((item) => item.role === 'company').length,
+    employees: users.filter((item) => item.role === 'employee').length,
+    vacancies: vacancies.length,
+    activeVacancies: vacancies.filter((item) => String(item.status || '').toLowerCase() === 'active').length,
+    resumes: resumes.length,
+    courses: courses.length,
+    certificates: certificates.length,
+  }
+
+  return res.json({ stats, users, vacancies, resumes, courses, certificates })
+})
+
+app.put('/api/admin/vacancies/:id/status', async (req, res) => {
+  const nextStatus = String(req.body?.status || '').trim().toLowerCase()
+  if (!['active', 'inactive'].includes(nextStatus)) {
+    return res.status(400).json({ message: 'status active yoki inactive bo‘lishi kerak.' })
+  }
+  let updated = null
+  await updateDb((db) => {
+    const vacancies = (db.vacancies || []).map((item) => {
+      if (String(item.id) !== String(req.params.id)) return item
+      updated = { ...item, status: nextStatus, updatedAt: new Date().toISOString() }
+      return updated
+    })
+    return { ...db, vacancies }
+  })
+  if (!updated) return res.status(404).json({ message: 'Vacancy topilmadi.' })
+  if (updated.ownerUserId) {
+    emitSse(getCompanyChannelKey(updated.ownerUserId), 'vacancy_updated', {
+      vacancyId: updated.id,
+      status: updated.status,
+      updatedAt: updated.updatedAt,
+    })
+  }
+  return res.json({ ok: true, vacancy: updated })
+})
+
+app.delete('/api/admin/vacancies/:id', async (req, res) => {
+  let removed = null
+  await updateDb((db) => {
+    const vacancies = Array.isArray(db.vacancies) ? db.vacancies : []
+    removed = vacancies.find((item) => String(item.id) === String(req.params.id)) || null
+    if (!removed) return db
+    return { ...db, vacancies: vacancies.filter((item) => String(item.id) !== String(req.params.id)) }
+  })
+  if (!removed) return res.status(404).json({ message: 'Vacancy topilmadi.' })
+  if (removed.ownerUserId) {
+    emitSse(getCompanyChannelKey(removed.ownerUserId), 'vacancy_deleted', {
+      vacancyId: removed.id,
+      updatedAt: new Date().toISOString(),
+    })
+  }
+  return res.json({ ok: true, deletedId: removed.id })
+})
+
+app.delete('/api/admin/users/:id', async (req, res) => {
+  const targetId = String(req.params.id || '').trim()
+  if (!targetId) return res.status(400).json({ message: 'User ID majburiy.' })
+
+  let removedUser = null
+  await updateDb((db) => {
+    const users = Array.isArray(db.users) ? db.users : []
+    const vacancies = Array.isArray(db.vacancies) ? db.vacancies : []
+    const resumes = Array.isArray(db.resumes) ? db.resumes : []
+    const user = users.find((item) => String(item.id) === targetId)
+    if (!user) return db
+    if (String(user.role || '').toLowerCase() === 'admin') return db
+    removedUser = user
+
+    const normalizedEmail = String(user.email || '').toLowerCase()
+    const filteredUsers = users.filter((item) => String(item.id) !== targetId)
+    const filteredVacancies =
+      String(user.role || '').toLowerCase() === 'company'
+        ? vacancies.filter((item) => String(item.ownerUserId || '') !== targetId)
+        : vacancies.map((item) => ({
+            ...item,
+            applicantsList: (item.applicantsList || []).filter((candidate) => {
+              const sameUser = String(candidate.userId || '') === targetId
+              const sameEmail = String(candidate.email || '').toLowerCase() === normalizedEmail
+              return !sameUser && !sameEmail
+            }),
+          }))
+    const filteredResumes = resumes.filter((item) => {
+      const sameUser = String(item.userId || '') === targetId
+      const sameEmail = String(item.email || '').toLowerCase() === normalizedEmail
+      return !sameUser && !sameEmail
+    })
+
+    return { ...db, users: filteredUsers, vacancies: filteredVacancies, resumes: filteredResumes }
+  })
+
+  if (!removedUser) return res.status(404).json({ message: 'User topilmadi yoki adminni o‘chirish mumkin emas.' })
+  return res.json({ ok: true, deletedUserId: targetId })
+})
+
 ;(async () => {
   await ensureCourseCatalog()
+  await ensureAdminAccount()
   app.listen(PORT, () => {
     // eslint-disable-next-line no-console
     console.log(`Backend server running on http://localhost:${PORT}`)

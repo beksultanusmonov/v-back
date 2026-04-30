@@ -1,323 +1,233 @@
 {
   "users": [
     {
-      "id": 4,
-      "role": "company",
-      "fullName": "Beksulton Usmonov",
-      "companyName": "Sultan Farm",
-      "email": "beksultonusmonov@gmail.com",
-      "password": "12345678",
-      "createdAt": "2026-04-29T06:53:01.293Z"
-    },
-    {
       "id": 3,
-      "role": "company",
-      "fullName": "Beksulton Usmonov",
-      "companyName": "Sultan Farm",
-      "email": "beksultonusmonov15@gmail.com",
-      "password": "12345678",
-      "createdAt": "2026-04-29T06:42:33.035Z"
-    },
-    {
-      "id": 1,
       "role": "employee",
-      "fullName": "Ali Valiyev",
+      "fullName": "Jasurbek Otabekov",
       "companyName": "",
-      "email": "ali@gmail.com",
+      "email": "jasur@gmail.com",
       "password": "12345678",
-      "createdAt": "2026-04-27T18:06:18.112Z"
+      "createdAt": "2026-04-30T16:31:37.361Z"
     },
     {
       "id": 2,
       "role": "company",
-      "fullName": "Beksulton Usmonov",
-      "companyName": "Sultan Farm",
-      "email": "beksultonusmonov16@gmail.com",
-      "password": "11111111",
-      "createdAt": "2026-04-27T16:14:51.400Z"
+      "fullName": "Isroilov",
+      "companyName": "Israil Production",
+      "email": "isroilov@gmail.com",
+      "password": "12345678",
+      "createdAt": "2026-04-30T16:27:00.366Z"
+    },
+    {
+      "id": 1,
+      "role": "admin",
+      "fullName": "Super Admin",
+      "companyName": "",
+      "email": "admin@gmail.com",
+      "password": "byisroilov",
+      "createdAt": "2026-04-30T04:52:09.898Z"
     }
   ],
   "vacancies": [
     {
-      "title": "Frontend",
-      "company": "Sultan Farm",
-      "ownerUserId": "4",
-      "location": "Andijon",
-      "type": "Full-time",
-      "level": "Junior",
-      "experience": "2+ yil",
-      "salary": 8000000,
-      "about": "lkadgldqwgal dad\naecescs\ndc\nadcs\nd sd\ncasck",
-      "requirements": [
-        "ckjlajdbclkadb clajbc;oa ;cohae;ohaec"
-      ],
-      "responsibilities": [
-        "ckjlajdbclkadb clajbc;oa ;cohae;ohaec"
-      ],
-      "technologies": [
-        "cscseces",
-        "c ewfg4wgewsf",
-        "ewcewce",
-        "c",
-        "ew"
-      ],
-      "updatedAt": "2026-04-29T06:55:57.227Z",
-      "applicantsList": [],
-      "status": "active",
-      "id": 9
-    },
-    {
-      "title": "Back",
-      "company": "PRODUCTION",
-      "ownerUserId": null,
+      "id": 0,
+      "title": "Frontend React Developer",
+      "company": "Israil Production",
+      "ownerUserId": "2",
       "location": "Toshkent",
-      "type": "Full-time",
-      "level": "Junior",
-      "experience": "2+ yil",
-      "salary": 8000000,
-      "about": "askhvaslicvals i",
-      "requirements": [
-        ".kjcbs leicz.kjcbsd;"
-      ],
-      "responsibilities": [
-        ".kjcbs leicz.kjcbsd;"
-      ],
-      "technologies": [
-        "sucds",
-        "fecewfceww",
-        "feewwe",
-        "c weewcewc",
-        "ew"
-      ],
-      "updatedAt": "2026-04-29T06:49:58.245Z",
-      "applicantsList": [],
-      "status": "inactive",
-      "id": 8
-    },
-    {
-      "title": "SMM Meneger",
-      "company": "Sultan Farm",
-      "ownerUserId": null,
-      "location": "Andijon",
-      "type": "Full-time",
-      "level": "Middle",
-      "experience": "2+ yil",
-      "salary": 8000000,
-      "about": "ASTI ni marketingi yurgizish kerak",
-      "requirements": [
-        "iPhone bolishi kerak, kontent bn ishlay oloishi"
-      ],
-      "responsibilities": [
-        "iPhone bolishi kerak, kontent bn ishlay oloishi"
-      ],
-      "technologies": [
-        "SMM",
-        "CapCut",
-        "AI"
-      ],
-      "updatedAt": "2026-04-29T05:29:03.910Z",
-      "applicantsList": [
-        {
-          "id": "cand-1777440517382",
-          "fullName": "Ali Valiyev",
-          "userId": null,
-          "email": "ali@gmail.com",
-          "resumeId": "res-1777350203338",
-          "status": "accepted",
-          "submittedAt": "2026-04-29T05:28:37.382Z"
-        }
-      ],
-      "status": "active",
-      "id": 7
-    },
-    {
-      "title": "Frontend developer",
-      "company": "Sultan Farm",
-      "ownerUserId": null,
-      "location": "Online",
       "type": "Full-time",
       "level": "Junior",
       "experience": "1+ yil",
-      "salary": "12000000",
-      "about": "Ishini ustasi bo'lishi kerak",
+      "salary": 9000000,
+      "about": "React asosida zamonaviy web interfeyslar ishlab chiqish uchun frontend dasturchi kerak.",
       "requirements": [
-        "Barch state managment bo'yich yaxshi ishlashi kerak"
+        "React va JavaScript bo‘yicha amaliy tajriba",
+        "REST API bilan ishlash",
+        "Git workflow tushunchasi"
       ],
       "responsibilities": [
-        "Barch state managment bo'yich yaxshi ishlashi kerak"
+        "Yangi sahifalar va komponentlar ishlab chiqish",
+        "UI/UX dizaynni kodga moslash",
+        "Kod sifatini saqlash va refaktor qilish"
       ],
       "technologies": [
-        "ReactJs",
-        "Tailwindcss",
-        "Redux Toolkit"
-      ],
-      "updatedAt": "2026-04-29T05:24:22.091Z",
-      "applicantsList": [
-        {
-          "id": "cand-1777362553326",
-          "fullName": "Ali Valiyev",
-          "userId": null,
-          "email": "ali@gmail.com",
-          "resumeId": "res-1777350203338",
-          "status": "accepted",
-          "submittedAt": "2026-04-28T07:49:13.326Z"
-        }
+        "React",
+        "JavaScript",
+        "Tailwind CSS"
       ],
       "status": "active",
-      "id": 1
+      "updatedAt": "2026-04-30T16:37:28.025Z",
+      "applicantsList": [
+        {
+          "id": "cand-1777567048025",
+          "fullName": "Jasurbek Otabekov",
+          "userId": "3",
+          "email": "jasur@gmail.com",
+          "resumeId": "res-1777566727891",
+          "status": "pending",
+          "submittedAt": "2026-04-30T16:37:28.025Z"
+        }
+      ]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "Backend Node.js Developer",
-      "company": "Sultan Farm",
-      "ownerUserId": 2,
-      "location": "Toshkent",
+      "company": "Israil Production",
+      "ownerUserId": "2",
+      "location": "Andijon",
       "type": "Full-time",
       "level": "Middle",
       "experience": "2+ yil",
-      "salary": 15000000,
-      "about": "REST API, autentifikatsiya va ma'lumotlar bazasi bilan ishlay oladigan backend developer kerak.",
+      "salary": 12000000,
+      "about": "Node.js va Express asosida API xizmatlarini yaratadigan backend mutaxassis kerak.",
       "requirements": [
-        "Node.js va Express bo'yicha amaliy tajriba",
-        "PostgreSQL yoki MongoDB bilan ishlash",
-        "Git workflow va clean code tamoyillari"
+        "Node.js/Express tajribasi",
+        "SQL yoki NoSQL bazalar bilan ishlash",
+        "JWT auth tushunchasi"
       ],
       "responsibilities": [
-        "Backend API endpointlarini ishlab chiqish",
-        "Auth va role-based access logikasini yuritish",
-        "Frontend jamoa bilan API integratsiya qilish"
+        "API endpointlar yozish",
+        "Baza integratsiyasini yuritish",
+        "Server xavfsizligini yaxshilash"
       ],
       "technologies": [
         "Node.js",
         "Express",
-        "PostgreSQL",
-        "JWT"
+        "PostgreSQL"
       ],
-      "updatedAt": "2026-04-29T05:12:00.000Z",
-      "applicantsList": [],
-      "status": "active"
+      "status": "active",
+      "updatedAt": "2026-04-30T16:30:00.000Z",
+      "applicantsList": []
     },
     {
-      "id": 3,
-      "title": "Frontend React Developer",
-      "company": "Sultan Farm",
-      "ownerUserId": 2,
-      "location": "Remote",
-      "type": "Full-time",
-      "level": "Middle",
-      "experience": "2+ yil",
-      "salary": 14000000,
-      "about": "Web dashboard va internal systemlar uchun React developer qidirilmoqda.",
-      "requirements": [
-        "React, hooks va component architecture bo'yicha tajriba",
-        "API bilan ishlash va state management bilimi",
-        "Responsive UI yozish ko'nikmasi"
-      ],
-      "responsibilities": [
-        "Yangi interfeys modullarini yaratish",
-        "Mavjud sahifalarda performance optimizatsiya qilish",
-        "UI buglarni tezkor hal qilish"
-      ],
-      "technologies": [
-        "React",
-        "Vite",
-        "Tailwind CSS",
-        "Redux Toolkit"
-      ],
-      "updatedAt": "2026-04-29T05:13:00.000Z",
-      "applicantsList": [],
-      "status": "active"
-    },
-    {
-      "id": 4,
+      "id": 2,
       "title": "UI/UX Designer",
-      "company": "Sultan Farm",
-      "ownerUserId": 2,
-      "location": "Toshkent",
+      "company": "Israil Production",
+      "ownerUserId": "2",
+      "location": "Samarqand",
       "type": "Hybrid",
       "level": "Middle",
       "experience": "2+ yil",
-      "salary": 11000000,
-      "about": "Mahsulot dizaynini foydalanuvchi tajribasi asosida yaxshilaydigan dizayner kerak.",
+      "salary": 10000000,
+      "about": "Product dizayni va foydalanuvchi tajribasini yaxshilash uchun UI/UX dizayner izlaymiz.",
       "requirements": [
-        "Figma bilan professional darajada ishlash",
-        "Wireframe va prototip tayyorlash tajribasi",
-        "Design system bilan ishlagan bo'lish"
+        "Figma bo‘yicha yaxshi ko‘nikma",
+        "Design system bilan ishlash",
+        "Portfolio mavjud bo‘lishi"
       ],
       "responsibilities": [
-        "Yangi product flowlar uchun UI/UX yechimlar ishlab chiqish",
-        "Developerlar bilan birga dizaynlarni implementatsiyaga tayyorlash",
-        "Mijoz feedback asosida iteratsiya qilish"
+        "Wireframe va prototiplar tayyorlash",
+        "Developerlar bilan hamkorlik",
+        "UX tadqiqot natijalarini amaliyotga joriy qilish"
       ],
       "technologies": [
         "Figma",
-        "FigJam",
-        "Design Systems"
+        "Design System",
+        "Prototyping"
       ],
-      "updatedAt": "2026-04-29T05:14:00.000Z",
-      "applicantsList": [],
-      "status": "active"
+      "status": "active",
+      "updatedAt": "2026-04-30T16:30:00.000Z",
+      "applicantsList": []
     },
     {
-      "id": 5,
+      "id": 3,
       "title": "QA Engineer",
-      "company": "Sultan Farm",
-      "ownerUserId": 2,
+      "company": "Israil Production",
+      "ownerUserId": "2",
       "location": "Remote",
-      "type": "Part-time",
+      "type": "Remote",
       "level": "Junior",
       "experience": "1+ yil",
-      "salary": 9000000,
-      "about": "Web va mobile platformalarda test jarayonlarini yo'lga qo'yadigan QA mutaxassis kerak.",
+      "salary": 8000000,
+      "about": "Loyiha sifatini nazorat qilish uchun manual va API testlarni bajaradigan QA mutaxassis kerak.",
       "requirements": [
-        "Manual testing bo'yicha tajriba",
-        "API testlar (Postman) bilan ishlay olish",
-        "Bug report yozish bo'yicha aniq yondashuv"
+        "Test case yozish tajribasi",
+        "API testlash asoslari",
+        "Bug tracking tizimlaridan foydalanish"
       ],
       "responsibilities": [
-        "Regression va smoke testlarni bajarish",
-        "Feature release oldidan test checklist yuritish",
-        "Topilgan xatolarni aniq reproduksiya bilan yozish"
+        "Regression va smoke testlar o‘tkazish",
+        "Buglar bo‘yicha aniq report tayyorlash",
+        "Release oldidan tekshiruvlarni yakunlash"
       ],
       "technologies": [
         "Postman",
         "Jira",
-        "Playwright"
+        "TestRail"
       ],
-      "updatedAt": "2026-04-29T05:15:00.000Z",
-      "applicantsList": [],
-      "status": "active"
+      "status": "active",
+      "updatedAt": "2026-04-30T16:30:00.000Z",
+      "applicantsList": []
     },
     {
-      "id": 6,
+      "id": 4,
       "title": "DevOps Engineer",
-      "company": "Sultan Farm",
-      "ownerUserId": 2,
+      "company": "Israil Production",
+      "ownerUserId": "2",
       "location": "Toshkent",
       "type": "Full-time",
       "level": "Senior",
       "experience": "3+ yil",
-      "salary": 20000000,
-      "about": "CI/CD, deployment va monitoring jarayonlarini boshqaradigan DevOps engineer qidirilmoqda.",
+      "salary": 15000000,
+      "about": "CI/CD va deployment jarayonlarini avtomatlashtirish uchun DevOps mutaxassis izlaymiz.",
       "requirements": [
-        "Docker va Linux bo'yicha chuqur bilim",
-        "CI/CD pipeline (GitHub Actions yoki GitLab CI) tajribasi",
-        "Cloud servislar bilan ishlash (AWS yoki GCP)"
+        "Linux va Docker bo‘yicha tajriba",
+        "CI/CD pipeline yozish",
+        "Cloud servislar bilan ishlash"
       ],
       "responsibilities": [
-        "Deployment jarayonlarini avtomatlashtirish",
-        "Server monitoring va alert tizimini yo'lga qo'yish",
-        "Infra xavfsizligi va barqarorligini ta'minlash"
+        "Deployment jarayonini optimallashtirish",
+        "Monitoring va log tizimini sozlash",
+        "Server infratuzilmasini qo‘llab-quvvatlash"
       ],
       "technologies": [
         "Docker",
-        "Nginx",
         "GitHub Actions",
-        "AWS"
+        "Nginx"
       ],
-      "updatedAt": "2026-04-29T05:16:00.000Z",
-      "applicantsList": [],
-      "status": "active"
+      "status": "active",
+      "updatedAt": "2026-04-30T16:30:00.000Z",
+      "applicantsList": []
+    },
+    {
+      "id": 5,
+      "title": "Project Manager",
+      "company": "Israil Production",
+      "ownerUserId": "2",
+      "location": "Farg‘ona",
+      "type": "Full-time",
+      "level": "Middle",
+      "experience": "2+ yil",
+      "salary": 13000000,
+      "about": "Dasturiy loyihalarni vaqtida va sifatli yakunlash uchun tajribali project manager kerak.",
+      "requirements": [
+        "Agile/Scrum jarayonlarini bilish",
+        "Jamoa boshqaruvi tajribasi",
+        "Mijoz bilan aloqa ko‘nikmasi"
+      ],
+      "responsibilities": [
+        "Sprint va tasklarni rejalashtirish",
+        "Jamoa ishini muvofiqlashtirish",
+        "Loyiha statuslarini stakeholderlarga yetkazish"
+      ],
+      "technologies": [
+        "Jira",
+        "Confluence",
+        "Slack"
+      ],
+      "status": "active",
+      "updatedAt": "2026-04-30T16:37:38.241Z",
+      "applicantsList": [
+        {
+          "id": "cand-1777567058241",
+          "fullName": "Jasurbek Otabekov",
+          "userId": "3",
+          "email": "jasur@gmail.com",
+          "resumeId": "res-1777566727891",
+          "status": "pending",
+          "submittedAt": "2026-04-30T16:37:38.241Z"
+        }
+      ]
     }
   ],
   "courses": [
@@ -844,64 +754,20 @@
   ],
   "resumes": [
     {
-      "fullName": "Ali Valiyev",
-      "email": "ali@gmail.com",
-      "phone": "+998903810616",
+      "fullName": "Jasurbek Otabekov",
+      "email": "jasur@gmail.com",
+      "phone": "+998901234567",
       "location": "Andijon",
-      "summary": "Men Usmonov Beksulton Frontend Developer sifatida 2 yildan beri ishlab kelaman",
-      "skills": "HTML, CSS, JavaScript, ReactJs, Tailwindcss, NodeJs, ",
-      "experience": "React Js da state menegment bilan ishlash",
-      "education": "Najot Talim, ASTI\n",
-      "portfolio": "https://t.me/beksulton_usmonov",
-      "updatedAt": "2026-04-29T05:21:36.988Z",
-      "id": "res-1777350203338",
-      "userId": null
+      "summary": "ASTI Instetutida 1 yil real loyihada ishlaganman tajribam bor\n ",
+      "skills": "Html, Css, JavaScript, TailwindCss, Sass, React JS, Redux toolkit, Material UI",
+      "experience": "ASTI instetutita ATM bo'limida 1+ yil ishlaganman",
+      "education": "ASTI, Nanot Talim",
+      "portfolio": "https://google.com",
+      "userId": "3",
+      "id": "res-1777566727891",
+      "updatedAt": "2026-04-30T16:37:15.894Z"
     }
   ],
-  "courseProgress": [
-    {
-      "userId": "email:ali@gmail.com",
-      "courseId": 2,
-      "completedLessonIds": [
-        "2-1",
-        "2-2",
-        "2-3",
-        "2-4",
-        "2-5"
-      ],
-      "completed": true,
-      "updatedAt": "2026-04-29T05:23:41.518Z"
-    },
-    {
-      "userId": "email:ali@gmail.com",
-      "courseId": 1,
-      "completedLessonIds": [
-        "1-1",
-        "1-2",
-        "1-4",
-        "1-5",
-        "1-3"
-      ],
-      "completed": true,
-      "updatedAt": "2026-04-28T05:39:18.550Z"
-    }
-  ],
-  "certificates": [
-    {
-      "id": "cert-1777440221518",
-      "userId": "email:ali@gmail.com",
-      "courseId": 2,
-      "fullName": "Ali Valiyev",
-      "courseName": "Backend Node.js API",
-      "issuedAt": "2026-04-29T05:23:41.518Z"
-    },
-    {
-      "id": "cert-1777354758550",
-      "userId": "email:ali@gmail.com",
-      "courseId": 1,
-      "fullName": "Ali Valiyev",
-      "courseName": "Frontend React Mastery",
-      "issuedAt": "2026-04-28T05:39:18.550Z"
-    }
-  ]
+  "courseProgress": [],
+  "certificates": []
 }

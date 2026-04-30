@@ -36,3 +36,13 @@ So data remains after redeploy/restart.
 Set frontend env:
 - `VITE_API_BASE_URL=https://<your-railway-domain>/api`
 
+## 8) SSE (Realtime) checklist
+- SSE endpointlar:
+  - `GET /api/events/company?ownerUserId=...`
+  - `GET /api/events/employee?userId=...&email=...`
+- Server heartbeat yuboradi (`: ping`) har ~25s; bu Railway/proxy idle timeoutlarga qarshi kerak.
+- Frontend `EventSource` ulanishi uzilganda avtomatik reconnect qiladi (2s interval bilan).
+- `CORS_ORIGINS` env ga frontend domain(lar)ini qo‘shing, aks holda SSE ulanish bloklanadi.
+- Railway deploydan keyin brauzer Network’da `event-stream` statusini tekshiring (connection doim ochiq turishi kerak).
+- Health check alohida qoladi: `GET /api/health`.
+
